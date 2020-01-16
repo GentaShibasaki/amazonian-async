@@ -46,6 +46,7 @@ class ReviewBuilder {
     let products = await readFile("./data/products.json");
     let reviews = await readFile("./data/reviews.json");
     let users = await readFile("./data/users.json");
+
     products = JSON.parse(products);
     reviews = JSON.parse(reviews);
     users = JSON.parse(users);
