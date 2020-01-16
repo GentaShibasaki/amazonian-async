@@ -28,11 +28,28 @@ class ReviewBuilder {
   }
 
   buildReviewsPromises() {
-    // FIXME
+    return Promise.all([
+      readFile("./data/products.json"),
+      readFile("./data/reviews.json"),
+      readFile("./data/users.json"),
+    ])
+      .then(([products, reviews, users]) => {
+        products = JSON.parse(products);
+        reviews = JSON.parse(reviews);
+        users = JSON.parse(users);
+        return produceResult({ products, reviews, users });
+      })
+      .catch((error) => console.log(error));
   }
 
   async buildReviewsAsyncAwait() {
-    // FIXME
+    let products = await readFile("./data/products.json");
+    let reviews = await readFile("./data/reviews.json");
+    let users = await readFile("./data/users.json");
+    products = JSON.parse(products);
+    reviews = JSON.parse(reviews);
+    users = JSON.parse(users);
+    return produceResult({ products, reviews, users });
   }
 }
 
